@@ -16,7 +16,13 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-
+  
+  <scm>
+    <connection>scm:git:git://github.com/dskyberg-Ping/moustache.git</connection>
+    <developerConnection>scm:git:https://github.com/dskyberg-Ping/moustache.git</developerConnection>
+    <url>https://github.com/dskyberg-Ping/moustache</url>
+  </scm>
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <timestamp>${maven.build.timestamp}</timestamp>
