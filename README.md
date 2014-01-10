@@ -51,9 +51,10 @@ When the above is compiled with **Moustache**, the following output is created:
 	-- Account Postal: 80202;
 	-- Account Domain: pingidentity.com
 
-Running:
+Running as a command line utility:
+
 ```shell
-usage: moustache
+usage: java -cp moustache.jar Main
 -help              Display this message and exit
 -verbose           Show status messages during processing
 -version           Display version and exit
@@ -61,6 +62,19 @@ usage: moustache
 -template <file>   file with moustache handlebars to process
 -out <file>        [optional]output file to create.  If not present, stdout.
 ```
+Embedding within your Java app:
+
+```java
+public String compileTemplate(InputStream template, InputStream props) throws Exception
+{
+	MoustacheCompiler compiler = new MoustacheCompiler();
+	compiler.setPropertiesFile(props);
+	compiler.setTemplateFile(template);
+	String out = compiler.compile();
+	return out;
+}
+```
+
 Building Moustache:
 
 1. Ensure you have Java 1.7 or greater installed
