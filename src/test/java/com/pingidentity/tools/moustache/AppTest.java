@@ -13,7 +13,7 @@ public class AppTest
     extends TestCase
 {
 	//String path = ""
-	private static final String validOutput = "-- Account Name: Ping Identity Demo\n -- Account Address: '1001 17th St. Suite 100'\n-- Account City: \"Denver\"\n-- Account Region: &CO&\n-- Account Country: US\n-- Account Postal: 80202;\n-- Account Domain: pingidentity.com\n";
+	private static final String validOutput = "-- Account Name: Ping Identity Demo \n-- Account Full Address: '1001 17th St. Suite 100' \n-- Account City: \"Denver\"\n-- Account Region: &CO&\n-- Account Country: US\n-- Account Postal: 80202;\n-- Account Domain: pingidentity.com\n";
     /**
      * Create the test case
      *
