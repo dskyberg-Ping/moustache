@@ -62,6 +62,7 @@ usage: moustache
 -out <file>        [optional]output file to create.  If not present, stdout.
 ```
 Building Moustache:
+
 1. Ensure you have Java 1.7 or greater installed
 2. Ensure you have Maven 3 or greater installed
 3. Download the pom.xml file.
