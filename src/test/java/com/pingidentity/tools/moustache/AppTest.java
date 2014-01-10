@@ -1,6 +1,5 @@
 package com.pingidentity.tools.moustache;
 
-import java.io.File;
 import java.io.InputStream;
 
 import junit.framework.Test;
