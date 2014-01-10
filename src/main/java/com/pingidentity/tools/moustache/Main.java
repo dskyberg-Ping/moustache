@@ -140,7 +140,7 @@ public class Main
     private void showHelp() {
     	// automatically generate the help statement
     	HelpFormatter formatter = new HelpFormatter();
-    	formatter.printHelp( "moustache", options );
+    	formatter.printHelp( "java -cp moustache.jar Main", options );
     }
     private void showVersion() throws IOException {
     	
