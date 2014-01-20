@@ -4,10 +4,13 @@
 
   <groupId>com.pingidentity.tools</groupId>
   <artifactId>moustache</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.1.0</version>
   <packaging>jar</packaging>
+  
   <name>moustache</name>
-  <url>http://maven.apache.org</url>
+  <description>Compile templates marked up with Moustache.java style handlebars using a Jodd.Props style properties file for template variables.</description>
+  <url>https://github.com/dskyberg-Ping/moustache</url>
+  
 
   <licenses>
     <license>
@@ -22,6 +25,13 @@
     <developerConnection>scm:git:https://github.com/dskyberg-Ping/moustache.git</developerConnection>
     <url>https://github.com/dskyberg-Ping/moustache</url>
   </scm>
+  <developers>
+    <developer>
+      <id>dskyberg</id>
+      <name>David Skyberg</name>
+      <email>dskyberg@pingidentity.com</email>
+    </developer>
+  </developers>
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -26,6 +26,7 @@ public class Main
     private File template;
     private File props;
     private File compiled;
+    private File script;
     
     public static void main( String[] args ) throws Exception
     {
@@ -62,13 +63,19 @@ public class Main
                 .hasArg()
                 .withDescription(  "[optional] output file to create.  If not present, stdout." )
                 .create( "out");
-
+       	@SuppressWarnings("Static-access")
+       	Option scriptFile = OptionBuilder.withArgName("xml")
+       		.hasArg()
+       		.withDescription("Execute from an XML scritp, rather than CLI arguments.  ")
+       		.create("script");
+       	
     	options.addOption("version",false, "Display version and exit");
     	options.addOption("help",false, "Display this message and exit");
     	options.addOption("verbose", false, "Show status messages during processing");
     	options.addOption(templateFile);
     	options.addOption(propsFile);
     	options.addOption(compiledFile);
+    	options.addOption(scriptFile);
     	return options;
     }
     
@@ -85,6 +92,16 @@ public class Main
     	}
     	if(cmd.hasOption("verbose")) {
     		verbose = true;
+    	}
+    	if(cmd.hasOption("script")) {
+    		// If a script was provided, ignore all other CLI commands,
+    		// and just execute the script.
+    		script = new File(cmd.getOptionValue("script"));
+    		if(!script.exists()) {
+    			throw new Exception("Cannot find script file: " + script);
+    		}
+    		
+    		return;
     	}
     	if(cmd.hasOption("template")) {
     		template = new File(cmd.getOptionValue("template"));
@@ -112,30 +129,13 @@ public class Main
     	
     	if(cmd.hasOption("out")) {
     		compiled = new File(cmd.getOptionValue("out"));
-    		writeFile(compiled, compiledTemplate);
+    		MoustacheCompiler.writeFile(compiled, compiledTemplate);
     	} else {
     		System.out.println(compiledTemplate);
     	}
     	
     }
     
-    private void writeFile(File file, String str) throws Exception {
-		FileWriter w = null;
-		try {
-			w = new FileWriter(file);
-			w.write(str);
-		} catch (IOException e) {
-			throw new Exception("Error creating compiled file ", e);
-		} finally {
-			if (w != null) {
-				try {
-					w.close();
-				} catch (IOException e) {
-					// ignore
-				}
-			}
-		}
-    }
     
     private void showHelp() {
     	// automatically generate the help statement

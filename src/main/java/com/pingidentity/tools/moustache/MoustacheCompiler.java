@@ -1,5 +1,7 @@
 package com.pingidentity.tools.moustache;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -200,5 +202,23 @@ public class MoustacheCompiler {
 			return;
 		System.out.println(str);
 	}
+	
+    public static void writeFile(File file, String str) throws Exception {
+		FileWriter w = null;
+		try {
+			w = new FileWriter(file);
+			w.write(str);
+		} catch (IOException e) {
+			throw new Exception("Error creating compiled file ", e);
+		} finally {
+			if (w != null) {
+				try {
+					w.close();
+				} catch (IOException e) {
+					// ignore
+				}
+			}
+		}
+    }
 
 }
