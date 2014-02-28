@@ -99,3 +99,6 @@ Building Moustache:
 2. Ensure you have Maven 3 or greater installed
 3. Download the pom.xml file.
 4. Run: mvn scm:checkout
+5. Run: mvn test
+Note: If you build from within Eclipse, the Maven generated version.properties file will not 
+contain a timestamp.  This is a Maven bug.

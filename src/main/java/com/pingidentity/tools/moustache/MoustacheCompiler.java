@@ -8,12 +8,15 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 import jodd.props.Props;
+import jodd.props.PropsEntry;
 
 import org.apache.commons.io.IOUtils;
+import org.json.simple.JSONObject;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
@@ -79,6 +82,9 @@ public class MoustacheCompiler {
 			throw new Exception(
 					"Error creating multi-map from properties");
 		}
+		// Log the map
+		JSONObject obj = new JSONObject(valueMap);
+		log(obj.toJSONString());
 
 		// Open and read the template file
 		String template = null;
@@ -152,9 +158,9 @@ public class MoustacheCompiler {
 	 *            the flat map to be parsed
 	 * @return the multi-level map.
 	 */
-	private Map<String, Object> multiMap(Map<String, Object> map) {
+	private Map<String, Object> multiMap(Map<String,Object> map) {
 		Map<String, Object> multi = new HashMap<String, Object>();
-
+	
 		// Get the set of keys
 		Set<String> keys = map.keySet();
 		for (String key : keys) {
