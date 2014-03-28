@@ -100,7 +100,10 @@ public class Main
     		if(!script.exists()) {
     			throw new Exception("Cannot find script file: " + script);
     		}
-    		
+    		InputStream scriptStream = new FileInputStream(script);
+    		MoustacheScript moustacheScript = new MoustacheScript(scriptStream);
+    		moustacheScript.execute();
+
     		return;
     	}
     	if(cmd.hasOption("template")) {
